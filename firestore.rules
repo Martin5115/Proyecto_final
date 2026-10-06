@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Cualquiera puede leer los posts; solo usuarios autenticados pueden crearlos
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.texto is string
+        && request.resource.data.texto.size() > 0
+        && request.resource.data.texto.size() <= 280;
+      allow update, delete: if false;
+    }
+
+    // Cada usuario solo lee y crea su propio perfil
+    match /users/{uid} {
+      allow read, create: if request.auth != null && request.auth.uid == uid;
+      allow update, delete: if false;
+    }
+  }
+}
