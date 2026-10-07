@@ -1,5 +1,10 @@
 # Muro Interactivo
 
+**Curso:** Programación WEB 
+**Profesor:** Raydelto Hernández
+**Estudiante:** Martin Gomez
+**Matricula:** 2024-2481
+
 Proyecto final de Programación WEB, Opción 1.
 Tecnologías: JavaScript ES6, React Vite y Firebase Authentication + Firestore
 
